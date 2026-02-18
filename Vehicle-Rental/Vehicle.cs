@@ -25,6 +25,11 @@ namespace Vehicle_Rental
             PricePerDay = pricePerDay;
             IsRented = false;
         }
+        public abstract decimal CalculateRentalCost(int days);
+        public virtual string GetVehicleType() 
+        {
+            return "Vehicle";
+        }
     }
     
 }
