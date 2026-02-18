@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace Vehicle_Rental
 {
-    internal class Vehicle
+    public abstract class Vehicle 
     {
-        "testa"
+        private static int autoId = 0;
+        private int id;
+        public int Id=>id;
     }
+    
 }
