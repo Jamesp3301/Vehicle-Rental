@@ -18,7 +18,7 @@ namespace Vehicle_Rental
         public bool IsRented{ get; set; }
         public Vehicle(string brand, string model, int year, decimal pricePerDay)
         {
-            id = ++autoId;  // auto id 
+            id = ++autoId;
             Brand = brand;
             Model = model;
             Year = year;
