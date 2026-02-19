@@ -40,6 +40,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.dgvAlugueres = new System.Windows.Forms.DataGridView();
             this.btnAlugar = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvVeiculos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numDias)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAlugueres)).BeginInit();
@@ -78,13 +79,13 @@
             this.btnRemove.Name = "btnRemove";
             this.btnRemove.Size = new System.Drawing.Size(75, 23);
             this.btnRemove.TabIndex = 4;
-            this.btnRemove.Text = "Remove";
+            this.btnRemove.Text = "Remover";
             this.btnRemove.UseVisualStyleBackColor = true;
             // 
             // Alugar
             // 
             this.Alugar.AutoSize = true;
-            this.Alugar.Location = new System.Drawing.Point(252, 174);
+            this.Alugar.Location = new System.Drawing.Point(241, 178);
             this.Alugar.Name = "Alugar";
             this.Alugar.Size = new System.Drawing.Size(80, 13);
             this.Alugar.TabIndex = 6;
@@ -149,12 +150,24 @@
             this.btnAlugar.TabIndex = 15;
             this.btnAlugar.Text = "Alugar";
             this.btnAlugar.UseVisualStyleBackColor = true;
+            this.btnAlugar.Click += new System.EventHandler(this.btnAlugar_Click_1);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(244, 141);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(75, 23);
+            this.btnEdit.TabIndex = 16;
+            this.btnEdit.Text = "Editar";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(594, 542);
+            this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAlugar);
             this.Controls.Add(this.dgvAlugueres);
             this.Controls.Add(this.label5);
@@ -192,6 +205,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.DataGridView dgvAlugueres;
         private System.Windows.Forms.Button btnAlugar;
+        private System.Windows.Forms.Button btnEdit;
     }
 }
 

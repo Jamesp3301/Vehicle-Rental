@@ -41,6 +41,33 @@ namespace Vehicle_Rental
 
             UpdateFields();
         }
+        public VehicleForm(Vehicle veiculo) : this()
+        {
+            veiculoEmEdicao = veiculo;
+
+           
+            txtMarca.Text = veiculo.Brand;
+            txtModelo.Text = veiculo.Model;
+            numAno.Value = veiculo.Year;
+            numPreco.Value = veiculo.PricePerDay;
+
+            if (veiculo is Car c)
+            {
+                cmbTipo.SelectedItem = "Car";
+                numPorta.Value = c.DoorNum;
+            }
+            else if (veiculo is Van v)
+            {
+                cmbTipo.SelectedItem = "Van";
+                numCapa.Value = (decimal)v.CargoCap;
+            }
+
+           //don't allow changing type while editing
+            cmbTipo.Enabled = false;
+
+            UpdateFields();
+        }
+
 
         private void cmbTipo_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -64,7 +91,22 @@ namespace Vehicle_Rental
             string modelo = txtModelo.Text;
             int ano = (int)numAno.Value;
             decimal preco = numPreco.Value;
+            //edit mode 
+            if (veiculoEmEdicao != null)
+            {
+                veiculoEmEdicao.Brand = marca;
+                veiculoEmEdicao.Model = modelo;
+                veiculoEmEdicao.Year = ano;
+                veiculoEmEdicao.PricePerDay = preco;
 
+                if (veiculoEmEdicao is Car c)
+                    c.DoorNum = (int)numPorta.Value;
+                else if (veiculoEmEdicao is Van v)
+                    v.CargoCap = (double)numCapa.Value;
+
+                DialogResult = DialogResult.OK;
+                return;
+            }
             if (cmbTipo.SelectedItem.ToString() == "Car")
             {
                 int portas = (int)numPorta.Value;
@@ -98,6 +140,8 @@ namespace Vehicle_Rental
 
             return valid;
         }
+        private Vehicle veiculoEmEdicao;
+
     }
 }
 

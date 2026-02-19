@@ -23,11 +23,11 @@ namespace Vehicle_Rental
             cmbVeiculos.DisplayMember = "Modelo";
 
             btnAdd.Click += btnAdicionar_Click;
+            btnEdit.Click += btnEdit_Click;
             btnRemove.Click += btnRemover_Click;
             btnAlugar.Click += btnAlugar_Click;
             this.FormClosing += Form1_FormClosing;
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             CarregarDados();
@@ -128,11 +128,37 @@ namespace Vehicle_Rental
             GuardarDados();
         }
 
+        private void btnAlugar_Click_1(object sender, EventArgs e)
+        {
+            int dias=(int)numDias.Value;
+            if (dias <= 0) 
+            {
+                MessageBox.Show("O numero de dias deve ser maior do 0");
+                return;
+            }
+        }
 
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (dgvVeiculos.CurrentRow == null)
+                return;
 
+            Vehicle veiculo = (Vehicle)dgvVeiculos.CurrentRow.DataBoundItem;
 
+            if (veiculo.IsRented)
+            {
+                MessageBox.Show("Não é possível editar um veículo alugado.");
+                return;
+            }
 
+            VehicleForm form = new VehicleForm(veiculo);
 
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                dgvVeiculos.Refresh();
+                cmbVeiculos.Refresh();
+            }
+        }
 
     }
 }
