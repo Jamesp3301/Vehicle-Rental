@@ -28,30 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dgvVeiculos = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnRemove = new System.Windows.Forms.Button();
             this.Alugar = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.numericUpDown1 = new System.Windows.Forms.NumericUpDown();
+            this.cmbVeiculos = new System.Windows.Forms.ComboBox();
+            this.numDias = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.dataGridView2 = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
+            this.dgvAlugueres = new System.Windows.Forms.DataGridView();
+            this.btnAlugar = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVeiculos)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDias)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlugueres)).BeginInit();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // dgvVeiculos
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(45, 36);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(482, 99);
-            this.dataGridView1.TabIndex = 0;
+            this.dgvVeiculos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvVeiculos.Location = new System.Drawing.Point(45, 36);
+            this.dgvVeiculos.Name = "dgvVeiculos";
+            this.dgvVeiculos.Size = new System.Drawing.Size(482, 99);
+            this.dgvVeiculos.TabIndex = 0;
             // 
             // label1
             // 
@@ -109,20 +109,20 @@
             this.label4.TabIndex = 9;
             this.label4.Text = "Veículos";
             // 
-            // comboBox1
+            // cmbVeiculos
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(79, 201);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 21);
-            this.comboBox1.TabIndex = 10;
+            this.cmbVeiculos.FormattingEnabled = true;
+            this.cmbVeiculos.Location = new System.Drawing.Point(79, 201);
+            this.cmbVeiculos.Name = "cmbVeiculos";
+            this.cmbVeiculos.Size = new System.Drawing.Size(121, 21);
+            this.cmbVeiculos.TabIndex = 10;
             // 
-            // numericUpDown1
+            // numDias
             // 
-            this.numericUpDown1.Location = new System.Drawing.Point(79, 234);
-            this.numericUpDown1.Name = "numericUpDown1";
-            this.numericUpDown1.Size = new System.Drawing.Size(120, 20);
-            this.numericUpDown1.TabIndex = 11;
+            this.numDias.Location = new System.Drawing.Point(79, 234);
+            this.numDias.Name = "numDias";
+            this.numDias.Size = new System.Drawing.Size(120, 20);
+            this.numDias.TabIndex = 11;
             // 
             // label5
             // 
@@ -133,46 +133,46 @@
             this.label5.TabIndex = 12;
             this.label5.Text = "Dias";
             // 
-            // label6
+            // dgvAlugueres
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(45, 273);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(35, 13);
-            this.label6.TabIndex = 13;
-            this.label6.Text = "label6";
+            this.dgvAlugueres.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvAlugueres.Location = new System.Drawing.Point(48, 322);
+            this.dgvAlugueres.Name = "dgvAlugueres";
+            this.dgvAlugueres.Size = new System.Drawing.Size(479, 112);
+            this.dgvAlugueres.TabIndex = 14;
             // 
-            // dataGridView2
+            // btnAlugar
             // 
-            this.dataGridView2.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView2.Location = new System.Drawing.Point(48, 322);
-            this.dataGridView2.Name = "dataGridView2";
-            this.dataGridView2.Size = new System.Drawing.Size(479, 112);
-            this.dataGridView2.TabIndex = 14;
+            this.btnAlugar.Location = new System.Drawing.Point(79, 260);
+            this.btnAlugar.Name = "btnAlugar";
+            this.btnAlugar.Size = new System.Drawing.Size(75, 23);
+            this.btnAlugar.TabIndex = 15;
+            this.btnAlugar.Text = "Alugar";
+            this.btnAlugar.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(594, 542);
-            this.Controls.Add(this.dataGridView2);
-            this.Controls.Add(this.label6);
+            this.Controls.Add(this.btnAlugar);
+            this.Controls.Add(this.dgvAlugueres);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.numericUpDown1);
-            this.Controls.Add(this.comboBox1);
+            this.Controls.Add(this.numDias);
+            this.Controls.Add(this.cmbVeiculos);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.Alugar);
             this.Controls.Add(this.btnRemove);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.dgvVeiculos);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvVeiculos)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.numDias)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvAlugueres)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,18 +180,18 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridView dgvVeiculos;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnRemove;
         private System.Windows.Forms.Label Alugar;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.NumericUpDown numericUpDown1;
+        private System.Windows.Forms.ComboBox cmbVeiculos;
+        private System.Windows.Forms.NumericUpDown numDias;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.DataGridView dgvAlugueres;
+        private System.Windows.Forms.Button btnAlugar;
     }
 }
 

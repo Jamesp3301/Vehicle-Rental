@@ -1,30 +1,84 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Vehicle_Rental
 {
     public partial class Form1 : Form
     {
+        private BindingList<Vehicle> listaVeiculos = new BindingList<Vehicle>();
+        private BindingList<Rental> listaAlugueres = new BindingList<Rental>();
+//CANCEL BUTTON STILL MAKES SHOWS ERROR FIX TOMMOROW MORNING!!!!!!!!!!!!
         public Form1()
         {
             InitializeComponent();
-        }
 
-        private void label3_Click(object sender, EventArgs e)
-        {
+            dgvVeiculos.DataSource = listaVeiculos;
+            dgvAlugueres.DataSource = listaAlugueres;
 
+            cmbVeiculos.DataSource = listaVeiculos;
+            cmbVeiculos.DisplayMember = "Modelo";
+
+            btnAdd.Click += btnAdicionar_Click;
+            btnRemove.Click += btnRemover_Click;
+            btnAlugar.Click += btnAlugar_Click;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+          
+        }
 
+        private void label3_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btnAdicionar_Click(object sender, EventArgs e)
+        {
+            VehicleForm form = new VehicleForm();
+
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                listaVeiculos.Add(form.CreatedVehicle);
+            }
+        }
+
+        private void btnRemover_Click(object sender, EventArgs e)
+        {
+            if (dgvVeiculos.CurrentRow == null)
+                return;
+
+            Vehicle veiculo = (Vehicle)dgvVeiculos.CurrentRow.DataBoundItem;
+
+            if (veiculo.IsRented)
+            {
+                MessageBox.Show("Não pode remover um veículo alugado.");
+                return;
+            }
+
+            listaVeiculos.Remove(veiculo);
+        }
+
+        private void btnAlugar_Click(object sender, EventArgs e)
+        {
+            if (cmbVeiculos.SelectedItem == null)
+                return;
+
+            Vehicle veiculo = (Vehicle)cmbVeiculos.SelectedItem;
+
+            if (veiculo.IsRented)
+            {
+                MessageBox.Show("Veículo já está alugado.");
+                return;
+            }
+
+            int dias = (int)numDias.Value;
+
+            Rental aluguer = new Rental(veiculo, dias);
+
+            listaAlugueres.Add(aluguer);
         }
     }
 }
+
