@@ -1,6 +1,9 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using System.IO;
+
 
 namespace Vehicle_Rental
 {
@@ -8,7 +11,7 @@ namespace Vehicle_Rental
     {
         private BindingList<Vehicle> listaVeiculos = new BindingList<Vehicle>();
         private BindingList<Rental> listaAlugueres = new BindingList<Rental>();
-//CANCEL BUTTON STILL MAKES SHOWS ERROR FIX TOMMOROW MORNING!!!!!!!!!!!!
+        //CANCEL BUTTON STILL MAKES SHOWS ERROR FIX TOMMOROW MORNING!!!!!!!!!!!!
         public Form1()
         {
             InitializeComponent();
@@ -22,16 +25,17 @@ namespace Vehicle_Rental
             btnAdd.Click += btnAdicionar_Click;
             btnRemove.Click += btnRemover_Click;
             btnAlugar.Click += btnAlugar_Click;
+            this.FormClosing += Form1_FormClosing;
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
-          
+            CarregarDados();
         }
 
         private void label3_Click(object sender, EventArgs e)
         {
-           
+
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
@@ -79,6 +83,57 @@ namespace Vehicle_Rental
 
             listaAlugueres.Add(aluguer);
         }
+        private string filePath = "dados.json";
+        private void GuardarDados()
+        {
+            DadosApp dados = new DadosApp
+            {
+                Veiculos = listaVeiculos,
+                Alugueres = listaAlugueres
+            };
+
+            string json = JsonConvert.SerializeObject(dados, Formatting.Indented,
+                new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.All
+                });
+
+            File.WriteAllText(filePath, json);
+        }
+        private void CarregarDados()
+        {
+            if (!File.Exists(filePath))
+                return;
+
+            string json = File.ReadAllText(filePath);
+
+            DadosApp dados = JsonConvert.DeserializeObject<DadosApp>(json,
+                new JsonSerializerSettings
+                {
+                    TypeNameHandling = TypeNameHandling.All
+                });
+
+            if (dados != null)
+            {
+                listaVeiculos = dados.Veiculos ?? new BindingList<Vehicle>();
+                listaAlugueres = dados.Alugueres ?? new BindingList<Rental>();
+
+                dgvVeiculos.DataSource = listaVeiculos;
+                dgvAlugueres.DataSource = listaAlugueres;
+                cmbVeiculos.DataSource = listaVeiculos;
+            }
+        }
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            GuardarDados();
+        }
+
+
+
+
+
+
+
     }
 }
 
