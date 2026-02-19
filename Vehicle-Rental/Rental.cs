@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Vehicle_Rental
 {
-    internal class Rental
+    public class Rental
     {
         private static int autoId = 0;
         protected int id;
