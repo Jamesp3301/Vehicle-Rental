@@ -1,8 +1,9 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.ComponentModel;
-using System.Windows.Forms;
-using Newtonsoft.Json;
 using System.IO;
+using System.Linq;
+using System.Windows.Forms;
 
 
 namespace Vehicle_Rental
@@ -11,7 +12,6 @@ namespace Vehicle_Rental
     {
         private BindingList<Vehicle> listaVeiculos = new BindingList<Vehicle>();
         private BindingList<Rental> listaAlugueres = new BindingList<Rental>();
-        //CANCEL BUTTON STILL MAKES SHOWS ERROR FIX TOMMOROW MORNING!!!!!!!!!!!!
         public Form1()
         {
             InitializeComponent();
@@ -46,6 +46,7 @@ namespace Vehicle_Rental
             {
                 listaVeiculos.Add(form.CreatedVehicle);
             }
+            AtualizarComboVeiculos();
         }
 
         private void btnRemover_Click(object sender, EventArgs e)
@@ -78,11 +79,17 @@ namespace Vehicle_Rental
             }
 
             int dias = (int)numDias.Value;
-
+            if (dias <= 0)
+            {
+                MessageBox.Show("O número de dias deve ser maior que 0.");
+                return; 
+            }
             Rental aluguer = new Rental(veiculo, dias);
-
             listaAlugueres.Add(aluguer);
+
+            AtualizarComboVeiculos();
         }
+
         private string filePath = "dados.json";
         private void GuardarDados()
         {
@@ -121,22 +128,21 @@ namespace Vehicle_Rental
                 dgvVeiculos.DataSource = listaVeiculos;
                 dgvAlugueres.DataSource = listaAlugueres;
                 cmbVeiculos.DataSource = listaVeiculos;
+                AtualizarComboVeiculos();   
             }
         }
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
             GuardarDados();
         }
-
-        private void btnAlugar_Click_1(object sender, EventArgs e)
+        private void AtualizarComboVeiculos()
         {
-            int dias=(int)numDias.Value;
-            if (dias <= 0) 
-            {
-                MessageBox.Show("O numero de dias deve ser maior do 0");
-                return;
-            }
+            var disponiveis = listaVeiculos.Where(v => !v.IsRented).ToList();
+
+            cmbVeiculos.DataSource = null;
+            cmbVeiculos.DataSource = disponiveis;   // lista de veículos reais (referências)
         }
+
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
@@ -161,11 +167,6 @@ namespace Vehicle_Rental
         }
 
         private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Alugar_Click(object sender, EventArgs e)
         {
 
         }

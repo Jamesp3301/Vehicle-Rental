@@ -13,3 +13,4 @@ namespace Vehicle_Rental
         public BindingList<Rental> Alugueres { get; set; }
     }
 }
+    

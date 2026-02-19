@@ -16,6 +16,11 @@ namespace Vehicle_Rental
         public int Year { get; set; }
         public decimal PricePerDay { get; set; }
         public bool IsRented{ get; set; }
+        public override string ToString()
+        {
+            return $"{Brand} {Model} ({Year})";
+        }
+
         public Vehicle(string brand, string model, int year, decimal pricePerDay)
         {
             id = ++autoId;  // auto id 

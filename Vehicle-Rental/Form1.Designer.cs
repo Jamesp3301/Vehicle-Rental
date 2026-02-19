@@ -95,7 +95,6 @@
             this.Alugar.Size = new System.Drawing.Size(106, 15);
             this.Alugar.TabIndex = 6;
             this.Alugar.Text = "Alugar Veiculos";
-            this.Alugar.Click += new System.EventHandler(this.Alugar_Click);
             // 
             // label3
             // 
@@ -123,7 +122,7 @@
             this.cmbVeiculos.FormattingEnabled = true;
             this.cmbVeiculos.Location = new System.Drawing.Point(79, 201);
             this.cmbVeiculos.Name = "cmbVeiculos";
-            this.cmbVeiculos.Size = new System.Drawing.Size(121, 21);
+            this.cmbVeiculos.Size = new System.Drawing.Size(178, 21);
             this.cmbVeiculos.TabIndex = 10;
             this.cmbVeiculos.SelectedIndexChanged += new System.EventHandler(this.cmbVeiculos_SelectedIndexChanged);
             // 
@@ -161,7 +160,6 @@
             this.btnAlugar.TabIndex = 15;
             this.btnAlugar.Text = "Alugar";
             this.btnAlugar.UseVisualStyleBackColor = true;
-            this.btnAlugar.Click += new System.EventHandler(this.btnAlugar_Click_1);
             // 
             // btnEdit
             // 
