@@ -160,6 +160,20 @@ namespace Vehicle_Rental
             }
         }
 
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Alugar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbVeiculos_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
